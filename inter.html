@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Button Color Change</title>
+</head>
+<body>
+  <button id="colorChangeButton">Click Me to Change Text Color</button>
+  <p id="textToChange">Hello, I will change color!</p>
+
+  <script>
+    const button = document.getElementById('colorChangeButton');
+    const text = document.getElementById('textToChange');
+
+    button.addEventListener('click', () => {
+      // Generate a random color in hexadecimal format
+      const randomColor = "#" + Math.floor(Math.random()*16777215).toString(16);
+
+      // Change the text color to the random color
+      text.style.color = randomColor;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do List</title>
+</head>
+<body>
+  <h2>To-Do List</h2>
+  <input type="text" id="newTask" placeholder="Enter a new task">
+  <button onclick="addTask()">Add Task</button>
+  <ul id="taskList">
+  </ul>
+
+  <script>
+    function addTask() {
+      const newTaskText = document.getElementById('newTask').value.trim();
+      if (newTaskText !== '') {
+        const taskList = document.getElementById('taskList');
+        const newTaskItem = document.createElement('li');
+        newTaskItem.innerHTML = `<input type="checkbox" onclick="toggleTask(this)">${newTaskText} <button onclick="removeTask(this)">Remove</button>`;
+        taskList.appendChild(newTaskItem);
+        document.getElementById('newTask').value = '';
+      }
+    }
+
+    function toggleTask(checkbox) {
+      const taskText = checkbox.nextSibling;
+      if (checkbox.checked) {
+        taskText.style.textDecoration = 'line-through';
+      } else {
+        taskText.style.textDecoration = 'none';
+      }
+    }
+
+    function removeTask(button) {
+      const taskItem = button.parentNode;
+      taskItem.remove();
+    }
+  </script>
+</body>
+</html>
